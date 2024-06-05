@@ -1,0 +1,77 @@
+---
+const { img, name, nickname, role, desc } = Astro.props;
+let roleParsed = "";
+role.map((rola: any) => {
+  roleParsed += rola + " • ";
+});
+---
+
+<div class="person">
+  <div class="person__img">
+    <img src={"/zespol/" + img} alt={name} title={name} />
+  </div>
+  <div class="person__text">
+    <h2>{name}</h2>
+    <small>
+      <span>{"@" + nickname}</span>
+      {roleParsed.slice(0, -2)}
+    </small>
+    <p title={desc}>{desc}</p>
+  </div>
+</div>
+
+<style>
+  .person__img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    border: 4px solid var(--clr-text);
+  }
+
+  .person__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .person__text {
+    margin-top: 1rem;
+  }
+
+  .person__text small {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--clr-accent);
+    font-size: 0.75rem;
+  }
+
+  .person__text span {
+    margin-right: 1rem;
+    color: var(--clr-text-300);
+  }
+
+  .person__text p {
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 60rem) {
+    .person {
+      display: grid;
+      gap: 1rem;
+      align-items: flex-start;
+      grid-template-columns: 9rem 1fr;
+    }
+
+    .person__text {
+      margin-top: 0;
+    }
+
+    .person__text p {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+</style>

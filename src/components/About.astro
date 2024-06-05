@@ -1,0 +1,76 @@
+<div class="about wrapper">
+  <div class="about__text">
+    <h2>Kim jesteśmy?</h2>
+    <p>
+      Jesteśmy zespołem pasjonatów, którzy wierzą w siłę rozrywki jako środka do
+      przekraczania granic, pobudzania wyobraźni i tworzenia niezapomnianych
+      wspomnień. W Bielsania Entertainment nie tylko projektujemy gry, ale także
+      kształtujemy światy, w które gracze mogą się zanurzyć, odkrywając nowe
+      wymiary przygód.
+    </p>
+    <p>
+      Jako Bielsania Entertainment nieustannie poszukujemy innowacji, starając
+      się wprowadzać unikalne elementy do każdej gry, której jesteśmy częścią.
+      Nasza misja to nie tylko dostarczanie rozrywki, ale także budowanie więzi
+      między graczami, tworząc miejsce, gdzie pasja łączy się z technologią, a
+      wirtualne staje się rzeczywiste.
+    </p>
+    <p>
+      Jesteśmy miejscem, gdzie każdy gracz może odnaleźć swoje własne miejsce w
+      wirtualnym świecie, pełnym nieograniczonych możliwości. W Bielsania
+      Entertainment tworzymy gry, które nie tylko bawią, ale także otwierają
+      drzwi do nowych światach i przygód. Przekształcamy marzenia w interaktywne
+      doświadczenia, a każdy projekt, nad którym pracujemy, jest wyrazem naszej
+      miłości do gier i pragnienia dzielenia się tą pasją z całym światem.
+    </p>
+  </div>
+  <div class="about__svg">
+    <img src="/svgs/about.svg" alt="About SVG" />
+  </div>
+</div>
+
+<style>
+  .about {
+    background-color: var(--clr-primary-300);
+    border-radius: 2rem;
+    padding: 1.5rem;
+    text-wrap: pretty;
+  }
+
+  .about__text h2 {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .about__text h2::before {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 1.5rem;
+    background-color: var(--clr-secondary);
+  }
+
+  .about__text p {
+    margin-top: 1rem;
+  }
+
+  .about__svg {
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 60rem) {
+    .about {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .about__text {
+      width: 60%;
+    }
+
+    .about__svg {
+      width: 40%;
+    }
+  }
+</style>

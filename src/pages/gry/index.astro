@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+import Game from "../../components/Game.astro";
+import Layout from "../../layouts/Layout.astro";
+const allGamesPosts = await getCollection("games");
+const allGamesPostsSorted = allGamesPosts
+  .sort((x: any, y: any) => {
+    return x.data.added - y.data.added;
+  })
+  .reverse();
+
+const gamesPosts = allGamesPostsSorted.map((post) => ({
+  title: post.data.title,
+  steam: post.data.steam,
+  gamejolt: post.data.gamejolt,
+  body: post.body,
+  img: post.data.imgs[0],
+  url: post.slug,
+}));
+---
+
+<Layout title="Nasze Gry">
+  <div class="games wrapper">
+    {
+      gamesPosts.map((item) => {
+        return (
+          <Game
+            title={item.title}
+            steam={item.steam}
+            gamejolt={item.gamejolt}
+            body={item.body}
+            img={item.img}
+            url={item.url}
+          />
+        );
+      })
+    }
+  </div>
+</Layout>
+
+<style>
+  .games {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+</style>

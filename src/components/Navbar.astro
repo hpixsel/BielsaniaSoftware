@@ -1,0 +1,308 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+console.log("currentPath", currentPath);
+---
+
+<script>
+  const navigation = document.querySelector(".nav-container");
+  const scrollWatcher = document.createElement("div");
+
+  scrollWatcher.setAttribute("data-scroll-watcher", "");
+  navigation?.before(scrollWatcher);
+
+  const navObserver = new IntersectionObserver(
+    (entries) => {
+      navigation?.classList.toggle("sticking", !entries[0].isIntersecting);
+    },
+    { rootMargin: "50px 0px 0px 0px" },
+  );
+
+  navObserver.observe(scrollWatcher);
+
+  const navMenu = document.querySelector(".nav__menu");
+  const navLinks = document.querySelector(".nav__links");
+
+  const toggleNav = () => {
+    navLinks?.classList.toggle("nav-open");
+  };
+
+  navMenu?.addEventListener("click", () => toggleNav());
+</script>
+
+<header class="nav-container">
+  <nav class="nav wrapper">
+    <div class="nav__logo">
+      <a href="/">
+        <img src="/logo.svg" alt="Bielsania Logo" />
+      </a>
+      <div class="nav__menu">
+        <img src="/svgs/menu.svg" alt="Menu" />
+      </div>
+    </div>
+    <ul class="nav__links">
+      <li class="nav__links__link">
+        <a class={currentPath === "" ? "active" : ""} href="/">
+          <div class="nav__links__link__svg">
+            <svg
+              width="18"
+              height="16"
+              viewBox="0 0 18 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_18_2274)">
+                <path
+                  d="M7.04 15.04V10.24H10.88V15.04C10.88 15.568 11.312 16 11.84 16H14.72C15.248 16 15.68 15.568 15.68 15.04V8.32003H17.312C17.7536 8.32003 17.9648 7.77283 17.6288 7.48483L9.6032 0.25603C9.2384 -0.0703695 8.6816 -0.0703695 8.3168 0.25603L0.291204 7.48483C-0.0351962 7.77283 0.166404 8.32003 0.608004 8.32003H2.24V15.04C2.24 15.568 2.672 16 3.2 16H6.08C6.608 16 7.04 15.568 7.04 15.04Z"
+                  fill="#EEEDEE"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_18_2274">
+                  <rect width="17.92" height="16" fill="#EEEDEE"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          Strona Główna
+          <span>❯</span>
+        </a>
+      </li>
+      <li class="nav__links__link">
+        <a
+          class={currentPath === "gry" || currentPath === "gry/"
+            ? "active"
+            : ""}
+          href="/gry"
+        >
+          <div class="nav__links__link__svg">
+            <svg
+              width="22"
+              height="16"
+              viewBox="0 0 22 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_18_2285)">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M9.24435 1.20957L8.70891 0.830913C7.9448 0.290229 7.03178 -8.39022e-05 6.09573 1.81889e-08H5.44297C5.01099 1.81889e-08 4.57582 0.0266659 4.16944 0.170662C1.62773 1.07304 -0.12044 4.36789 0.00648632 11.8429C0.0320848 13.349 0.384064 15.013 1.74292 15.6625C2.20646 15.8854 2.71437 16.0006 3.2287 15.9996C3.8068 16.0091 4.37472 15.8469 4.8606 15.5335C5.29791 15.2476 5.68189 14.8764 6.06587 14.5052C6.53944 14.0466 7.01301 13.5879 7.58471 13.2914C8.20758 12.9684 8.89895 12.7997 9.6006 12.7997H11.7327C12.4346 12.7997 13.1257 12.9682 13.7486 13.2903C14.3203 13.5879 14.7939 14.0466 15.2685 14.5052C15.6525 14.8764 16.0365 15.2476 16.4717 15.5335C16.8876 15.8065 17.4263 15.9996 18.1046 15.9996C18.619 16.0006 19.1269 15.8854 19.5904 15.6625C20.9493 15.013 21.3012 13.3479 21.3268 11.8429C21.4538 4.36789 19.7056 1.07304 17.1639 0.171729C16.7564 0.0266658 16.3191 1.81889e-08 15.8893 1.81889e-08H15.2365C14.3004 0.000157731 13.3873 0.290854 12.6234 0.83198L12.0879 1.20957C11.6722 1.50372 11.1754 1.66168 10.6661 1.66168C10.1568 1.66168 9.6601 1.50372 9.24435 1.20957ZM15.7325 4.26656C15.9447 4.26656 16.1481 4.35085 16.2982 4.50087C16.4482 4.6509 16.5325 4.85437 16.5325 5.06654C16.5325 5.27871 16.4482 5.48219 16.2982 5.63221C16.1481 5.78224 15.9447 5.86652 15.7325 5.86652C15.5203 5.86652 15.3169 5.78224 15.1669 5.63221C15.0168 5.48219 14.9326 5.27871 14.9326 5.06654C14.9326 4.85437 15.0168 4.6509 15.1669 4.50087C15.3169 4.35085 15.5203 4.26656 15.7325 4.26656ZM5.86641 4.53322C6.07857 4.53322 6.28204 4.61751 6.43206 4.76753C6.58208 4.91756 6.66637 5.12103 6.66637 5.3332V6.13318H7.46632C7.67848 6.13318 7.88195 6.21747 8.03197 6.36749C8.18199 6.51752 8.26627 6.721 8.26627 6.93316C8.26627 7.14533 8.18199 7.34881 8.03197 7.49883C7.88195 7.64886 7.67848 7.73314 7.46632 7.73314H6.66637V8.53312C6.66637 8.74529 6.58208 8.94877 6.43206 9.09879C6.28204 9.24882 6.07857 9.3331 5.86641 9.3331C5.65425 9.3331 5.45078 9.24882 5.30076 9.09879C5.15074 8.94877 5.06646 8.74529 5.06646 8.53312V7.73314H4.2665C4.05434 7.73314 3.85087 7.64886 3.70085 7.49883C3.55083 7.34881 3.46655 7.14533 3.46655 6.93316C3.46655 6.721 3.55083 6.51752 3.70085 6.36749C3.85087 6.21747 4.05434 6.13318 4.2665 6.13318H5.06646V5.3332C5.06646 5.12103 5.15074 4.91756 5.30076 4.76753C5.45078 4.61751 5.65425 4.53322 5.86641 4.53322ZM18.1324 6.6665C18.1324 6.87867 18.0481 7.08215 17.8981 7.23217C17.748 7.3822 17.5446 7.46648 17.3324 7.46648C17.1203 7.46648 16.9168 7.3822 16.7668 7.23217C16.6167 7.08215 16.5325 6.87867 16.5325 6.6665C16.5325 6.45434 16.6167 6.25086 16.7668 6.10083C16.9168 5.95081 17.1203 5.86652 17.3324 5.86652C17.5446 5.86652 17.748 5.95081 17.8981 6.10083C18.0481 6.25086 18.1324 6.45434 18.1324 6.6665ZM14.1326 7.46648C14.3448 7.46648 14.5482 7.3822 14.6982 7.23217C14.8483 7.08215 14.9326 6.87867 14.9326 6.6665C14.9326 6.45434 14.8483 6.25086 14.6982 6.10083C14.5482 5.95081 14.3448 5.86652 14.1326 5.86652C13.9204 5.86652 13.717 5.95081 13.5669 6.10083C13.4169 6.25086 13.3326 6.45434 13.3326 6.6665C13.3326 6.87867 13.4169 7.08215 13.5669 7.23217C13.717 7.3822 13.9204 7.46648 14.1326 7.46648ZM16.5325 8.26646C16.5325 8.0543 16.4482 7.85082 16.2982 7.70079C16.1481 7.55077 15.9447 7.46648 15.7325 7.46648C15.5203 7.46648 15.3169 7.55077 15.1669 7.70079C15.0168 7.85082 14.9326 8.0543 14.9326 8.26646C14.9326 8.47863 15.0168 8.68211 15.1669 8.83214C15.3169 8.98216 15.5203 9.06644 15.7325 9.06644C15.9447 9.06644 16.1481 8.98216 16.2982 8.83214C16.4482 8.68211 16.5325 8.47863 16.5325 8.26646Z"
+                  fill="#EEEDEE"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_18_2285">
+                  <rect width="21.3333" height="16" fill="white"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          Nasze Gry
+          <span>❯</span>
+        </a>
+      </li>
+      <li class="nav__links__link">
+        <a
+          class={currentPath === "zespol" || currentPath === "zespol/"
+            ? "active"
+            : ""}
+          href="/zespol"
+        >
+          <div class="nav__links__link__svg">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8 6.4C8.84869 6.4 9.66263 6.06286 10.2627 5.46274C10.8629 4.86263 11.2 4.04869 11.2 3.2C11.2 2.35131 10.8629 1.53737 10.2627 0.937258C9.66263 0.337142 8.84869 0 8 0C7.15131 0 6.33737 0.337142 5.73726 0.937258C5.13714 1.53737 4.8 2.35131 4.8 3.2C4.8 4.04869 5.13714 4.86263 5.73726 5.46274C6.33737 6.06286 7.15131 6.4 8 6.4ZM2.8 8.8C3.33043 8.8 3.83914 8.58929 4.21421 8.21421C4.58929 7.83914 4.8 7.33043 4.8 6.8C4.8 6.26957 4.58929 5.76086 4.21421 5.38579C3.83914 5.01071 3.33043 4.8 2.8 4.8C2.26957 4.8 1.76086 5.01071 1.38579 5.38579C1.01071 5.76086 0.8 6.26957 0.8 6.8C0.8 7.33043 1.01071 7.83914 1.38579 8.21421C1.76086 8.58929 2.26957 8.8 2.8 8.8ZM15.2 6.8C15.2 7.33043 14.9893 7.83914 14.6142 8.21421C14.2391 8.58929 13.7304 8.8 13.2 8.8C12.6696 8.8 12.1609 8.58929 11.7858 8.21421C11.4107 7.83914 11.2 7.33043 11.2 6.8C11.2 6.26957 11.4107 5.76086 11.7858 5.38579C12.1609 5.01071 12.6696 4.8 13.2 4.8C13.7304 4.8 14.2391 5.01071 14.6142 5.38579C14.9893 5.76086 15.2 6.26957 15.2 6.8ZM8 7.2C9.06087 7.2 10.0783 7.62143 10.8284 8.37157C11.5786 9.12172 12 10.1391 12 11.2V16H4V11.2C4 10.1391 4.42143 9.12172 5.17157 8.37157C5.92172 7.62143 6.93913 7.2 8 7.2ZM2.4 11.2C2.4 10.6456 2.48 10.1104 2.6304 9.6048L2.4944 9.616C1.8087 9.69129 1.17493 10.017 0.71461 10.5308C0.254289 11.0446 -0.000179007 11.7102 9.4478e-08 12.4V16H2.4V11.2ZM16 16V12.4C16.0001 11.6867 15.7279 11.0002 15.2391 10.4808C14.7503 9.96132 14.0816 9.64801 13.3696 9.6048C13.5192 10.1104 13.6 10.6456 13.6 11.2V16H16Z"
+                fill="#EEEDEE"></path>
+            </svg>
+          </div>
+          Zespół
+          <span>❯</span>
+        </a>
+      </li>
+      <li class="nav__links__link">
+        <a
+          class={currentPath === "kontakt" || currentPath === "kontakt/"
+            ? "active"
+            : ""}
+          href="/kontakt"
+        >
+          <div class="nav__links__link__svg">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14.4 0H1.6C0.72 0 0.00799999 0.72 0.00799999 1.6L0 16L3.2 12.8H14.4C15.28 12.8 16 12.08 16 11.2V1.6C16 0.72 15.28 0 14.4 0ZM12.8 9.6H3.2V8H12.8V9.6ZM12.8 7.2H3.2V5.6H12.8V7.2ZM12.8 4.8H3.2V3.2H12.8V4.8Z"
+                fill="#EEEDEE"></path>
+            </svg>
+          </div>
+          Kontakt
+          <span>❯</span>
+        </a>
+      </li>
+      <div class="nav__links__socials">
+        <a href="https://twitter.com/Bielsania" target="_blank">
+          <img src="/svgs/twitter.svg" alt="Twitter Link" />
+        </a>
+        <a href="#!"><img src="/svgs/discord.svg" alt="Discord Link" /></a>
+      </div>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .nav-container {
+    position: sticky;
+    top: 0;
+    background-color: initial;
+    transition: background-color 250ms;
+    z-index: 999;
+  }
+
+  .nav-container.sticking {
+    background-color: var(--clr-main);
+  }
+
+  .nav {
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    isolation: isolate;
+  }
+
+  .nav__menu {
+    cursor: pointer;
+  }
+
+  .nav__logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nav__links {
+    position: fixed;
+    inset: 5rem 0 0 0;
+    background-color: initial;
+    transform: translateX(100%);
+    transition:
+      background-color 600ms cubic-bezier(0.33, 1, 0.68, 1),
+      transform 600ms cubic-bezier(0.33, 1, 0.68, 1),
+      opacity 300ms cubic-bezier(0.33, 1, 0.68, 1);
+
+    list-style: none;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+  }
+
+  .nav__links.nav-open {
+    background-color: var(--clr-nav-menu);
+    backdrop-filter: blur(2px);
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .nav__links__link a {
+    display: grid;
+    grid-template-columns: 2rem 1fr 1rem;
+    align-items: center;
+    color: var(--clr-text);
+    text-decoration: none;
+    padding-block: 1.5rem;
+    font-weight: 600;
+  }
+
+  .nav__links__link:first-child a {
+    padding-top: 0rem;
+  }
+
+  .nav__links__link a span {
+    margin-left: auto;
+  }
+
+  .nav__links__link::after {
+    content: "";
+    display: block;
+    background-color: var(--clr-white);
+    width: 100%;
+    height: 1px;
+  }
+
+  .nav__logo a {
+    display: block;
+  }
+
+  .nav__links__socials {
+    margin-top: auto;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .active,
+  .active svg path {
+    fill: var(--clr-secondary);
+    color: var(--clr-secondary) !important;
+  }
+
+  @media (min-width: 60rem) {
+    .nav__menu,
+    .nav__links__socials,
+    .nav__links__link a span {
+      display: none;
+    }
+
+    .nav__logo {
+      width: fit-content;
+      margin-right: auto;
+    }
+
+    .nav__links {
+      position: initial;
+      transform: translateX(0);
+      flex-direction: row;
+      background-color: var(--clr-primary-300);
+      font-size: 14px;
+      padding: 0.5em 1em;
+      border-radius: 5rem;
+      opacity: 1;
+    }
+
+    .nav__links__link {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav__links__link::after {
+      width: 1px;
+      height: 1rem;
+      margin-inline: 1rem;
+      background-color: var(--clr-text-300);
+    }
+
+    .nav__links__link:last-of-type::after {
+      display: none;
+    }
+
+    .nav__links__link a {
+      white-space: nowrap;
+      padding-block: 0;
+      grid-template-columns: 2rem 1fr;
+      font-weight: 400;
+    }
+
+    .active {
+      font-weight: 700 !important;
+    }
+  }
+</style>

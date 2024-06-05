@@ -1,0 +1,123 @@
+---
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="container">
+      <Navbar />
+      <div class="main">
+        <slot />
+      </div>
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  :root {
+    --clr-main: #0f0c0f;
+    --clr-primary: #c1b6c1;
+    --clr-primary-300: #c1b6c129;
+    --clr-primary-100: #c2b7c20d;
+    --clr-secondary: #dc4936;
+    --clr-accent: #e57567;
+    --clr-nav-menu: #0f0c0fe6;
+    --clr-text: #eeedee;
+    --clr-text-300: #8b888b;
+    --clr-white: #fff;
+    --clr-black: #000;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--clr-main);
+    color: var(--clr-text);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--clr-white);
+    line-height: 1;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+  }
+
+  .wrapper {
+    width: min(calc(100% - 3rem), 60rem);
+    margin-inline: auto;
+  }
+
+  .main {
+    flex-grow: 1;
+  }
+
+  .btn {
+    display: block;
+    padding: 1rem 2rem;
+    background-color: var(--clr-secondary);
+    color: var(--clr-text);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 10rem;
+    width: fit-content;
+    cursor: pointer;
+    transition:
+      background-color 125ms ease-out,
+      transform 125ms ease-in;
+  }
+
+  .btn:hover {
+    background-color: color-mix(in srgb, var(--clr-secondary) 75%, transparent);
+    transform: scale(1.1);
+  }
+</style>

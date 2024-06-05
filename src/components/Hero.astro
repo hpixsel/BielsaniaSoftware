@@ -1,0 +1,95 @@
+<div class="hero">
+  <div class="wrapper">
+    <div class="hero__svg">
+      <img src="/svgs/hero_svg.svg" alt="" />
+    </div>
+    <div class="hero__text">
+      <h1>Wspólnie eksplorujemy <span>światy</span> gier!</h1>
+      <p>
+        Nasza misja to nie tylko tworzenie gier, ale także budowanie
+        społeczności, gdzie pasjonaci mogą się spotkać i dzielić wspólnymi
+        doświadczeniami
+      </p>
+      <a class="hero__btn btn" href="/gry">Sprawdź Nasze Gry</a>
+    </div>
+  </div>
+  <div class="hero__bg"></div>
+</div>
+
+<style>
+  .hero {
+    margin-top: 1.5rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 4rem;
+  }
+
+  .hero__svg {
+    width: 100%;
+  }
+
+  .hero__text {
+    margin-top: 2rem;
+  }
+
+  .hero__text h1 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .hero__text span {
+    color: var(--clr-accent);
+    letter-spacing: 0.35rem;
+  }
+
+  .hero__text p {
+    margin-top: 1rem;
+  }
+
+  .hero__btn {
+    margin-top: 2rem;
+    margin-inline: auto;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    top: -7rem;
+    bottom: -2rem;
+    background-image: url("/svgs/hero_bg.svg");
+    background-repeat: no-repeat;
+    background-size: 350%;
+    background-position: 50% 50%;
+    z-index: -1;
+  }
+
+  @media (min-width: 60rem) {
+    .hero {
+      text-align: left;
+      padding-block: 7.5rem;
+    }
+
+    .hero > div {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 1rem;
+    }
+
+    .hero__svg {
+      margin-top: auto;
+    }
+
+    .hero__text h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero__btn {
+      margin-left: 0;
+    }
+
+    .hero__bg {
+      background-size: 150%;
+      background-position: 50% 100%;
+    }
+  }
+</style>

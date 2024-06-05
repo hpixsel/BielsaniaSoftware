@@ -1,0 +1,124 @@
+---
+const { body, data } = Astro.props;
+
+let roleParsed = "";
+data.role.map((rola: any) => {
+  roleParsed += rola + " • ";
+});
+---
+
+<div class="person">
+  <div class="person__img">
+    <img src={"/zespol/" + data.img} alt={data.name} title={data.name} />
+  </div>
+  <div class="person__text">
+    <div class="person__text__heading">
+      <h2>{data.name}</h2>
+      <div class="person__text__heading__socials">
+        {
+          data?.linkedin ? (
+            <a href={data?.linkedin} target="_blank">
+              <img src="/svgs/linkedin.svg" alt={data.name + "Linkedin link"} />
+            </a>
+          ) : (
+            ""
+          )
+        }
+        {
+          data?.facebook ? (
+            <a href={data?.facebook} target="_blank">
+              <img src="/svgs/facebook.svg" alt={data.name + "Facebook link"} />
+            </a>
+          ) : (
+            ""
+          )
+        }
+        {
+          data?.twitter ? (
+            <a href={data?.twitter} target="_blank">
+              <img src="/svgs/twitter.svg" alt={data.name + "Twitter link"} />
+            </a>
+          ) : (
+            ""
+          )
+        }
+      </div>
+    </div>
+    <small>
+      <span>{"@" + data.nickname}</span>
+      {roleParsed.slice(0, -2)}
+    </small>
+    <p title={body}>{body}</p>
+  </div>
+</div>
+
+<style>
+  .person__img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    border: 4px solid var(--clr-text);
+  }
+
+  .person__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .person__text {
+    margin-top: 1rem;
+  }
+
+  .person__text__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .person__text__heading__socials {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .person__text__heading__socials > * {
+    width: 1rem;
+  }
+
+  .person__text small {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--clr-accent);
+    font-size: 0.75rem;
+  }
+
+  .person__text span {
+    margin-right: 1rem;
+    color: var(--clr-text-300);
+  }
+
+  .person__text p {
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 60rem) {
+    .person {
+      display: grid;
+      gap: 1rem;
+      align-items: flex-start;
+      grid-template-columns: 13.5rem 1fr;
+    }
+
+    .person__text {
+      margin-top: 0;
+    }
+
+    .person__text p {
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+</style>

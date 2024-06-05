@@ -1,0 +1,76 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Wiadomość wysłana">
+  <div class="message wrapper">
+    <h1><span>Dziękujemy</span> za wiadomość!</h1>
+    <p>
+      Twoja wiadomość została wysłana. Postaramy się na nią odpowiedzieć
+      najszybciej jak będzie to tylko możliwe :)
+    </p>
+    <a class="btn" href="/">Powrót do strony głównej</a>
+  </div>
+  <div class="message__bg"></div>
+</Layout>
+
+<style>
+  .message {
+    display: grid;
+    place-content: center;
+    place-items: center;
+    text-align: center;
+    height: calc(100dvh - 12rem);
+  }
+
+  .message h1 {
+    line-height: 1.2;
+  }
+
+  .message h1 span {
+    color: var(--clr-accent);
+  }
+
+  .message p {
+    max-width: 60ch;
+    text-wrap: pretty;
+  }
+
+  :where(.message > * + *) {
+    margin-top: 1em;
+  }
+
+  .message__bg {
+    position: absolute;
+    inset: 0;
+    top: 0rem;
+    bottom: 0rem;
+    background-image: url("/svgs/hero_bg.svg");
+    background-repeat: no-repeat;
+    background-size: 350%;
+    background-position: 50% 50%;
+    z-index: -1;
+  }
+
+  .message a {
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 60rem) {
+    .message {
+      height: calc(100dvh - 9.5rem);
+    }
+
+    .message h1 {
+      line-height: 1;
+      font-size: 4rem;
+    }
+
+    .message__bg {
+      opacity: 0.5;
+      filter: blur(1rem);
+      background-size: 250%;
+      background-position: 50% 50%;
+    }
+  }
+</style>
