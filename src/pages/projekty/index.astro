@@ -1,33 +1,32 @@
 ---
 import { getCollection } from "astro:content";
-import Game from "../../components/Game.astro";
+import Project from "../../components/Project.astro";
 import Layout from "../../layouts/Layout.astro";
-const allGamesPosts = await getCollection("games");
-const allGamesPostsSorted = allGamesPosts
+const allProjects = await getCollection("projects");
+const allProjectsSorted = allProjects
   .sort((x: any, y: any) => {
     return x.data.added - y.data.added;
   })
-  .reverse();
 
-const gamesPosts = allGamesPostsSorted.map((post) => ({
-  title: post.data.title,
-  steam: post.data.steam,
-  gamejolt: post.data.gamejolt,
-  body: post.body,
-  img: post.data.imgs[0],
-  url: post.slug,
+const projects = allProjectsSorted.map((project) => ({
+  title: project.data.title,
+  link: project.data.link,
+  github: project.data.github,
+  body: project.body,
+  img: project.data.imgs[0],
+  url: project.slug,
 }));
 ---
 
-<Layout title="Nasze Gry">
+<Layout title="Nasze Projekty">
   <div class="games wrapper">
     {
-      gamesPosts.map((item) => {
+      projects.map((item) => {
         return (
-          <Game
+          <Project
             title={item.title}
-            steam={item.steam}
-            gamejolt={item.gamejolt}
+            link={item.link}
+            github={item.github}
             body={item.body}
             img={item.img}
             url={item.url}

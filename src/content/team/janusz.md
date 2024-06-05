@@ -1,9 +1,9 @@
 ---
-img: temp1.jpg
-name: AImię Nazwisko
-nickname: nickname
-role: ["Role przy tworzeniu gry"]
-facebook: https://www.facebook.com/
+img: janusz.jpg
+name: Janusz Kacper
+nickname: yanushevitz
+role: ["Backend Dev"]
+facebook: https://www.facebook.com/rainydaysneversaygoodbye
 twitter: https://twitter.com/bielsania
 ---
 

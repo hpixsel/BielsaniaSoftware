@@ -2,27 +2,16 @@
   <div class="about__text">
     <h2>Kim jesteśmy?</h2>
     <p>
-      Jesteśmy zespołem pasjonatów, którzy wierzą w siłę rozrywki jako środka do
-      przekraczania granic, pobudzania wyobraźni i tworzenia niezapomnianych
-      wspomnień. W Bielsania Entertainment nie tylko projektujemy gry, ale także
-      kształtujemy światy, w które gracze mogą się zanurzyć, odkrywając nowe
-      wymiary przygód.
+      Jesteśmy młodymi pasjonatami technologii z dużym zapałem do tworzenia unikalnych i przyciągających wzrok stron internetowych. Nasze doświadczenie zdobyte w trakcie nauki pozwala nam na profesjonalne podejście do każdego projektu. 
     </p>
     <p>
-      Jako Bielsania Entertainment nieustannie poszukujemy innowacji, starając
-      się wprowadzać unikalne elementy do każdej gry, której jesteśmy częścią.
-      Nasza misja to nie tylko dostarczanie rozrywki, ale także budowanie więzi
-      między graczami, tworząc miejsce, gdzie pasja łączy się z technologią, a
-      wirtualne staje się rzeczywiste.
+      <b>Nasze wartości</b>
     </p>
-    <p>
-      Jesteśmy miejscem, gdzie każdy gracz może odnaleźć swoje własne miejsce w
-      wirtualnym świecie, pełnym nieograniczonych możliwości. W Bielsania
-      Entertainment tworzymy gry, które nie tylko bawią, ale także otwierają
-      drzwi do nowych światach i przygód. Przekształcamy marzenia w interaktywne
-      doświadczenia, a każdy projekt, nad którym pracujemy, jest wyrazem naszej
-      miłości do gier i pragnienia dzielenia się tą pasją z całym światem.
-    </p>
+    <ul>
+      <li>Innowacyjność: Korzystamy z najnowszych technologii i trendów w web designie, aby dostarczać nowoczesne i innowacyjne rozwiązania.</li>
+      <li>Jakość: Każdy projekt traktujemy indywidualnie, dbając o najmniejsze detale, aby zapewnić najwyższą jakość wykonania.</li>  
+      <li>Zaangażowanie: Jesteśmy w pełni zaangażowani w każdy projekt, co przekłada się na zadowolenie naszych klientów i trwałe relacje biznesowe.</li>
+    </ul>
   </div>
   <div class="about__svg">
     <img src="/svgs/about.svg" alt="About SVG" />
@@ -59,6 +48,19 @@
     margin-top: 2rem;
   }
 
+  .about__svg svg {
+    width: 100%;
+  }
+
+  ul {
+    list-style: none;
+    padding-top: 0.25rem;
+  }
+
+  li + li {
+    margin-top: 1rem;
+  }
+
   @media (min-width: 60rem) {
     .about {
       display: flex;
@@ -66,11 +68,17 @@
     }
 
     .about__text {
-      width: 60%;
+      width: 100%;
     }
 
     .about__svg {
-      width: 40%;
+      width: 70%;
+      margin-top: auto;
+    }
+
+    ul {
+      list-style: disc;
+      margin-left: 1rem;
     }
   }
 </style>

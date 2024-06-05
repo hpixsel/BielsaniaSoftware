@@ -43,14 +43,14 @@ const { title } = Astro.props;
   }
 
   :root {
-    --clr-main: #0f0c0f;
-    --clr-primary: #c1b6c1;
+    --clr-main: #070608;
+    --clr-primary: #BEAAD2;
     --clr-primary-300: #c1b6c129;
     --clr-primary-100: #c2b7c20d;
-    --clr-secondary: #dc4936;
-    --clr-accent: #e57567;
+    --clr-secondary: #9333EA;
+    --clr-accent: #C28BF3;
     --clr-nav-menu: #0f0c0fe6;
-    --clr-text: #eeedee;
+    --clr-text: #EEECF0;
     --clr-text-300: #8b888b;
     --clr-white: #fff;
     --clr-black: #000;
@@ -104,8 +104,8 @@ const { title } = Astro.props;
   .btn {
     display: block;
     padding: 1rem 2rem;
-    background-color: var(--clr-secondary);
-    color: var(--clr-text);
+    background-color: var(--clr-primary);
+    color: var(--clr-main);
     text-decoration: none;
     font-weight: 500;
     border-radius: 10rem;
@@ -117,7 +117,7 @@ const { title } = Astro.props;
   }
 
   .btn:hover {
-    background-color: color-mix(in srgb, var(--clr-secondary) 75%, transparent);
+    background-color: color-mix(in srgb, var(--clr-primary) 75%, transparent);
     transform: scale(1.1);
   }
 </style>
