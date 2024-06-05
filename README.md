@@ -1,7 +1,7 @@
-# Bielsania
+# Bielsania Software
 
 ![Main Page](image.png)
-Strona Bielsanii Entertainment
+Strona Bielsanii Software
 
 ## Włączenie servera z projektem
 

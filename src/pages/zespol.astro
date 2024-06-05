@@ -6,14 +6,12 @@ const allTeammates = await getCollection("team");
 const allTeammatesSorted = allTeammates.sort((x: any, y: any) => {
   return x.data.name.localeCompare(y.data.name);
 });
-console.log(allTeammates);
 ---
 
 <Layout title="Zespół">
   <div class="team wrapper">
     {
       allTeammatesSorted.map((person: any) => {
-        console.log("person", person);
         return <Person body={person.body} data={person.data} />;
       })
     }

@@ -1,0 +1,159 @@
+---
+// const { title, steam, gamejolt, Body, img } = Astro.props;
+const project = Astro.props;
+---
+
+<div class="game">
+  <div class="game__text--container">
+    <div class="game__socials">
+      {
+        project?.link ? (
+          <a href={project?.link} target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <title>Website Link</title>
+                <path d="M17.232 14.4c.096-.792.168-1.584.168-2.4 0-.816-.072-1.608-.168-2.4h4.056A9.89 9.89 0 0 1 21.6 12a9.89 9.89 0 0 1-.312 2.4m-6.18 6.672a18.779 18.779 0 0 0 1.656-4.272h3.54a9.636 9.636 0 0 1-5.196 4.272Zm-.3-6.672H9.192A15.922 15.922 0 0 1 9 12c0-.816.072-1.62.192-2.4h5.616c.108.78.192 1.584.192 2.4 0 .816-.084 1.608-.192 2.4ZM12 21.552c-.996-1.44-1.8-3.036-2.292-4.752h4.584c-.492 1.716-1.296 3.312-2.292 4.752ZM7.2 7.2H3.696A9.504 9.504 0 0 1 8.88 2.928C8.16 4.26 7.62 5.7 7.2 7.2Zm-3.504 9.6H7.2c.42 1.5.96 2.94 1.68 4.272A9.6 9.6 0 0 1 3.696 16.8Zm-.984-2.4A9.89 9.89 0 0 1 2.4 12c0-.828.12-1.632.312-2.4h4.056A19.818 19.818 0 0 0 6.6 12c0 .816.072 1.608.168 2.4M12 2.436c.996 1.44 1.8 3.048 2.292 4.764H9.708C10.2 5.484 11.004 3.876 12 2.436ZM20.304 7.2h-3.54a18.84 18.84 0 0 0-1.656-4.272A9.584 9.584 0 0 1 20.304 7.2ZM12 0C5.364 0 0 5.4 0 12A12 12 0 1 0 12 0Z"/>
+            </svg>
+          </a>
+        ) : (
+          ""
+        )
+      }
+      {
+        project?.github ? (
+          <a href={project?.github} target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <title>Github Link</title>
+                <path  d="M12 0C5.37 0 0 5.506 0 12.303c0 5.445 3.435 10.043 8.205 11.674.6.107.825-.262.825-.585 0-.292-.015-1.261-.015-2.291C6 21.67 5.22 20.346 4.98 19.654c-.135-.354-.72-1.446-1.23-1.738-.42-.23-1.02-.8-.015-.815.945-.015 1.62.892 1.845 1.261 1.08 1.86 2.805 1.338 3.495 1.015.105-.8.42-1.338.765-1.645-2.67-.308-5.46-1.37-5.46-6.075 0-1.338.465-2.446 1.23-3.307-.12-.308-.54-1.569.12-3.26 0 0 1.005-.323 3.3 1.26.96-.276 1.98-.415 3-.415s2.04.139 3 .416c2.295-1.6 3.3-1.261 3.3-1.261.66 1.691.24 2.952.12 3.26.765.861 1.23 1.953 1.23 3.307 0 4.721-2.805 5.767-5.475 6.075.435.384.81 1.122.81 2.276 0 1.645-.015 2.968-.015 3.383 0 .323.225.707.825.585a12.043 12.043 0 0 0 5.92-4.488A12.532 12.532 0 0 0 24 12.303C24 5.506 18.63 0 12 0Z"/>
+            </svg>
+          </a>
+        ) : (
+          ""
+        )
+      }
+    </div>
+    <div class="game__text">
+      <h2>{project.title}</h2>
+      <p>{project.body}</p>
+    </div>
+  </div>
+  <div class="game__img">
+    <img src={"/projekty" + project.img} alt={project.title} />
+  </div>
+  <a
+    class="game__link"
+    aria-label={"Link do gry: " + project.url}
+    href={"/projekty/" + project.url}></a>
+  <div class="game__bg"></div>
+</div>
+
+<style>
+  .game__link {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+  }
+
+  .game {
+    --_bg-color: 15, 12, 15;
+    --_text-color: var(--clr-white);
+
+    background-color: var(--clr-primary-300);
+    color: var(--_text-color);
+    text-wrap: pretty;
+    overflow: hidden;
+    border-radius: 2rem;
+    position: relative;
+    isolation: isolate;
+    border: 2px solid #ffffff1a;
+  }
+
+  .game:nth-of-type(2n + 1) {
+    --_bg-color: 190, 170, 210;
+    --_text-color: var(--clr-black);
+    border: 0;
+  }
+
+  .game__socials svg path {
+    fill: var(--_text-color);
+  }
+
+  .game__text {
+    padding: 1.5rem;
+    padding-top: 0;
+    position: relative;
+    z-index: 3;
+  }
+
+  .game__socials {
+    position: relative;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 4;
+    padding: 1.5rem;
+    padding-bottom: 0;
+    width: fit-content;
+  }
+
+  .game__socials > * {
+    width: 1.5rem;
+  }
+
+  .game__text h2 {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 1rem;
+    color: var(--_text-color);
+  }
+
+  .game__text h2::before {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 1.5rem;
+    background-color: var(--clr-secondary);
+  }
+
+  .game__text :global(p) {
+    margin-top: 1rem;
+  }
+
+  .game__img {
+    aspect-ratio: 16/9;
+    width: 100%;
+    z-index: 0;
+  }
+
+  .game__img img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .game__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      180deg,
+      rgba(var(--_bg-color), 1) 75%,
+      rgba(var(--_bg-color), 0) 100%
+    );
+  }
+
+  @media (min-width: 60rem) {
+    .game {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    .game__bg {
+      background: linear-gradient(
+        90deg,
+        rgba(var(--_bg-color), 1) 75%,
+        rgba(var(--_bg-color), 0) 100%
+      );
+    }
+  }
+</style>
