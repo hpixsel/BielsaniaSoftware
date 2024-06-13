@@ -66,6 +66,8 @@ role.map((rola: any) => {
     .person {
       grid-template-columns: 9rem 1fr;
       grid-template-areas: "img header" "img text";
+      grid-template-rows: auto 1fr;
+      gap: 0 1rem;
     }
 
     .person p {
@@ -73,6 +75,11 @@ role.map((rola: any) => {
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      margin-top: 1rem;
+    }
+
+    .person__header span {
+      display: initial;
     }
   }
 </style>
